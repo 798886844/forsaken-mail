@@ -30,3 +30,56 @@ http://localhost:3000
 ```
 
 Enjoy!
+
+中文部署教程
+=====
+
+```
+本教程是在CentOS上使用的，如有使用其他系统的，请自行替换相关命令，同时实测Ubuntu一样可以运行本程序。
+```
+
+### 前期准备工作
+
+```
+#安装git
+
+yum install git -y
+
+#安装node.js
+
+wget https://nodejs.org/download/release/latest/node-v10.3.0-linux-x64.tar.gz
+
+tar --strip-components 1 -xzvf node-v* -C /usr/local
+
+#用下面命令能够返回版本信息则安装成功了
+
+node --version
+```
+
+### 下载源码并安装
+
+```
+#下载项目源码
+
+git clone https://github.com/lbjlaq/forsaken-mail.gitcd forsaken-mail
+
+#安装项目所需的并启动
+
+npm install && npm start
+```
+
+### 如果没报错的，这个时候直接访问自己的ip就可以看到显示正常了。
+
+### 【80端口版】搭建临时邮箱系统forsaken-mail
+###后台自动运行
+
+```
+npm install -g pm2pm2 start bin/www
+pm2 startup
+
+pm2 save
+```
+
+### 域名解析
+
+然后把你的域名A记录解析到ip上就可以了。
